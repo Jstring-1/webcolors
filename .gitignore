@@ -1,0 +1,7 @@
+# macOS junk
+.DS_Store
+._*
+
+# Editor/OS
+Thumbs.db
+*.swp
