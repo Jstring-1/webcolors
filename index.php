@@ -92,10 +92,6 @@
 
    </div>
 
-   <div id="footer">
-    &copy; WebColors
-   </div>
-
   </div>
 
   <div class="wc-modal" id="m-websafe">
