@@ -110,7 +110,6 @@
       <option value="sl">Sat&#215;Light</option>
      </select>
      <button type="button" class="wc-sort-dir" data-pal="websafe" title="Ascending / descending">&#8593;</button>
-     <span class="wc-sort-note">click a color for its codes</span>
     </div>
     <div class="wc-grid"></div>
    </div>
@@ -130,7 +129,6 @@
       <option value="sl">Sat&#215;Light</option>
      </select>
      <button type="button" class="wc-sort-dir" data-pal="crayola" title="Ascending / descending">&#8593;</button>
-     <span class="wc-sort-note">click a color for its codes</span>
     </div>
     <div class="wc-grid"></div>
    </div>
