@@ -35,39 +35,38 @@
 
       <div class="cgen-group">
        <span class="cgen-head">Amount</span>
-       <span class="cgen-num">Dots/Boxes
-        <span class="num-wrap"><input type="number" min="100" max="9999" step="50" name="n"><span class="num-steps"><button type="button" class="num-up" data-step="n:50" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="n:-50" aria-label="decrease">&#9660;</button></span></span>
+       <span class="cgen-num" title="How many colors to generate (100-9999)">Dots/Boxes
+        <span class="num-wrap"><input type="number" min="100" max="9999" step="50" name="n" title="How many colors to generate (100-9999)"><span class="num-steps"><button type="button" class="num-up" data-step="n:50" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="n:-50" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
-       <span class="cgen-num">Dot/Box size
-        <span class="num-wrap"><input type="number" min="1" max="99" name="size"><span class="num-steps"><button type="button" class="num-up" data-step="size:1" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="size:-1" aria-label="decrease">&#9660;</button></span></span>
+       <span class="cgen-num" title="Size of each swatch in pixels (1-99)">Dot/Box size
+        <span class="num-wrap"><input type="number" min="1" max="99" name="size" title="Size of each swatch in pixels (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="size:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="size:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
-       <span class="cgen-num">Hue Sections
-        <span class="num-wrap"><input type="number" min="1" max="99" name="sections"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" aria-label="decrease">&#9660;</button></span></span>
+       <span class="cgen-num" title="Split the colors into this many hue groups (1-99)">Hue Sections
+        <span class="num-wrap"><input type="number" min="1" max="99" name="sections" title="Split the colors into this many hue groups (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
       </div>
 
       <div class="cgen-group">
        <span class="cgen-head">Order by</span>
        <div class="seg">
-        <input type="radio" class="tg" id="s1-h" name="sort1" value="h"><label class="tg-btn" for="s1-h">Hue</label>
-        <input type="radio" class="tg" id="s1-s" name="sort1" value="s"><label class="tg-btn" for="s1-s">Sat</label>
-        <input type="radio" class="tg" id="s1-l" name="sort1" value="l"><label class="tg-btn" for="s1-l">Light</label>
-        <input type="radio" class="tg" id="s1-x" name="sort1" value="x"><label class="tg-btn" for="s1-x">Hex</label>
-        <input type="radio" class="tg" id="s1-sl" name="sort1" value="sl"><label class="tg-btn" for="s1-sl">Sat&#215;Light</label>
+        <input type="radio" class="tg" id="s1-h" name="sort1" value="h"><label class="tg-btn" for="s1-h" title="Sort each section by hue">Hue</label>
+        <input type="radio" class="tg" id="s1-s" name="sort1" value="s"><label class="tg-btn" for="s1-s" title="Sort each section by saturation">Sat</label>
+        <input type="radio" class="tg" id="s1-l" name="sort1" value="l"><label class="tg-btn" for="s1-l" title="Sort each section by lightness">Light</label>
+        <input type="radio" class="tg" id="s1-x" name="sort1" value="x"><label class="tg-btn" for="s1-x" title="Sort each section by hex value">Hex</label>
+        <input type="radio" class="tg" id="s1-sl" name="sort1" value="sl"><label class="tg-btn" for="s1-sl" title="Sort each section by saturation x lightness">Sat&#215;Light</label>
        </div>
        <div class="seg">
-        <button type="button" class="tg-btn tg-toggle" id="sortDir">Ascending &#8593;</button>
+        <button type="button" class="tg-btn tg-toggle" id="sortDir" title="Toggle ascending / descending sort">Ascending &#8593;</button>
        </div>
       </div>
 
       <div class="cgen-group">
        <span class="cgen-head">Options</span>
        <div class="seg seg-wrap">
-        <input type="checkbox" class="tg" id="o-black"><label class="tg-btn" for="o-black">Black BG</label>
-        <input type="checkbox" class="tg" id="o-square"><label class="tg-btn" for="o-square">Square</label>
-        <input type="checkbox" class="tg" id="o-wide"><label class="tg-btn" for="o-wide">Wide</label>
-        <input type="checkbox" class="tg" id="o-spacer"><label class="tg-btn" for="o-spacer">No Spacer</label>
-        <input type="checkbox" class="tg" id="o-disco"><label class="tg-btn" for="o-disco">Disco</label>
+        <button type="button" class="tg-btn tg-toggle" id="bgBtn" title="Cycle the page background: Black -> White -> Disco">Black BG</button>
+        <input type="checkbox" class="tg" id="o-square"><label class="tg-btn" for="o-square" title="Use square swatches instead of circles">Square</label>
+        <input type="checkbox" class="tg" id="o-wide"><label class="tg-btn" for="o-wide" title="Stretch the grid so each hue section is its own column">Wide</label>
+        <input type="checkbox" class="tg" id="o-spacer"><label class="tg-btn" for="o-spacer" title="Show gaps between hue sections">Spacer</label>
        </div>
       </div>
 
@@ -75,18 +74,18 @@
        <span class="cgen-head">Palettes</span>
        <div class="pal-row">
         <span class="pal-name">Web Safe Colors</span>
-        <button type="button" class="pbtn" data-view="websafe">View</button>
-        <button type="button" class="pbtn" data-pal="websafe">Restrict colors</button>
+        <button type="button" class="pbtn" data-view="websafe" title="Browse all named web-safe colors">View</button>
+        <button type="button" class="pbtn" data-pal="websafe" title="Generate using only web-safe colors">Restrict colors</button>
        </div>
        <div class="pal-row">
         <span class="pal-name">Crayola Colors</span>
-        <button type="button" class="pbtn" data-view="crayola">View</button>
-        <button type="button" class="pbtn" data-pal="crayola">Restrict colors</button>
+        <button type="button" class="pbtn" data-view="crayola" title="Browse all Crayola colors">View</button>
+        <button type="button" class="pbtn" data-pal="crayola" title="Generate using only Crayola colors">Restrict colors</button>
        </div>
       </div>
 
       <div class="cgen-group cgen-meta">
-       <button type="button" class="rand-btn" id="randBtn">&#127922; Randomize</button>
+       <button type="button" class="rand-btn" id="randBtn" title="Randomize every setting and colors">&#127922; Randomize</button>
       </div>
 
      </div>
@@ -120,6 +119,13 @@
     <p class="wc-modal-note">Click any color to copy its hex code.</p>
     <div class="wc-grid"></div>
    </div>
+  </div>
+
+  <div id="color-pop" class="color-pop">
+   <button type="button" class="color-pop-x" aria-label="close">&times;</button>
+   <div class="color-pop-sw"></div>
+   <div class="color-pop-rows"></div>
+   <div class="cp-hint">Click a code to copy</div>
   </div>
 
   <script src="js/palettes.js"></script>
