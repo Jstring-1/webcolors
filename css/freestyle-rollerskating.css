@@ -93,5 +93,9 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 #ad{ width:98%; min-height:60px; margin:14px auto 0; clear:both; overflow:hidden; }
 #footer{ width:98%; margin:8px auto 0; padding:8px 0; text-align:center; font-size:12px; font-weight:600; }
 
+/* copy toast */
+.wc-toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(10px); background:rgba(20,20,22,.95); color:#fff; padding:8px 16px; border-radius:10px; font-size:13px; font-weight:600; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; z-index:2000; box-shadow:0 6px 20px rgba(0,0,0,.4); }
+.wc-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
 @media (max-width:960px){ .cgen-meta{ position:static; margin-left:auto; } }
 @media (max-width:560px){ body{ padding:12px; } .cgen-meta{ margin-left:0; } .cgen-row{ gap:14px 16px; } }
