@@ -1,4 +1,5 @@
-<?php @include_once(   "inc/Pre.php" ); 
+<?php @include_once(   "inc/Pre.php" );
+  $bgcolor = "";
   if (isset($black) && $black == "yes"){$bgcolor="background:#000;color:#" . key($text) . ";";}
   if (isset($discomode) && $discomode == "righton"){$bgcolor="background: red; 
 background: -webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);  
@@ -27,12 +28,15 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
  
    
    <div id="header">
-    <h1><a href="/WebColors/?x="><img align="bottom" src="img/wheel-60.png" /> WebColors</a></h1>
+    <h1><a href="/"><img align="bottom" src="img/wheel-60.png" /> WebColors</a></h1>
     <h3>
      <ul>
       <li><a href="/?x=RandomColorGenerator">Random Color Generator</a>
       <li><a href="/?x=WebSafeColors">Web Safe Colors</a>
       <li><a href="/?x=CrayolaColors">Crayola Colors</a>
+      <li><a href="/?x=Wiki">Wiki</a>
+      <li><a href="/?x=Resources">Resources</a>
+      <li><a href="/?x=About">About</a>
      </ul>
     </h3>
    </div>
@@ -44,7 +48,6 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
    </div>
 
      <div id="ad">
-       <!--  lord satan, please let some honkies or ethnics click on this ad. the few pennies will go in my piggy bank shaped like a black hole.  -->
        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!--WebColors.info--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8272820157791982" data-ad-slot="5547967074" data-ad-format="auto"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
       </div> 
   
@@ -55,8 +58,6 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
   <script src="js/clipboard.min.js"></script>
   <script src="js/tooltips.js"></script>
 
-  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-71712888-1','auto');ga('send','pageview');</script>
-  
   <!--
    I'd like to give thanks to my wife, who believes that I was cleaning the house while I coded this.
    without her ignorance, none of this bullshit would be possible.

@@ -5,3 +5,6 @@
 # Editor/OS
 Thumbs.db
 *.swp
+
+# dev server log
+server.log

@@ -1,9 +1,9 @@
    <h2>Unique Random Web Color Generator</h2>
    <div id="form" style="background:#<?php echo key($bg1); ?>;">
-    <form name="colors" method="get" action="/WebColors">
+    <form name="colors" method="get" action="/">
      <div id="form-section">
       <div id="form-inner">
-       <input type="hidden" name="x" value="<?php echo $_GET['x'];?>">
+       <input type="hidden" name="x" value="<?php echo htmlspecialchars($_GET['x'] ?? '', ENT_QUOTES); ?>">
        <b>Number of Colors</b> (100 - 9,999)<br />
        <input type="text" maxlength="4" value="<?php echo $n; ?>" name="n"><br />
        <b>Hue Sections</b> (1 - 99)<br />
