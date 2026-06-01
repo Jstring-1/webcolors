@@ -61,8 +61,7 @@ body{
 .tg:focus-visible + .tg-btn{ outline:2px solid var(--accent); outline-offset:2px; }
 .tg-toggle{ background:var(--accent); border-color:var(--accent); color:#fff; }
 .tg-toggle:hover{ filter:brightness(1.08); border-color:var(--accent); color:#fff; }
-#sortDir{ min-width:116px; justify-content:center; }
-#bgBtn{ min-width:84px; justify-content:center; }
+#sortDir{ min-width:40px; justify-content:center; font-size:14px; }
 
 /* palette controls */
 .pal-row{ display:flex; align-items:center; gap:8px; }
@@ -94,6 +93,7 @@ body.mode-dark .pchip-hex{ color:#ddd; }
 #color-wrappage.square .swatch{ border-radius:0; }
 .spacer{ clear:both; height:10px; }
 #color-wrappage.flat .spacer{ height:0; }
+#color-wrappage:not(.flat) .swatch{ margin:0; }
 .cursor-pointer:hover{ cursor:pointer; }
 
 /* palette modal */

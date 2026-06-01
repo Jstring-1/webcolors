@@ -11,7 +11,6 @@
   };
 
   var BG_CYCLE = ["black", "white"];
-  var BG_LABEL = { black: "Black BG", white: "White BG" };
 
   var cgen, wrap, paletteTray, popHex = "";
   var PALETTE_CAP = 10;
@@ -158,8 +157,7 @@
     byId("o-square").checked = state.square;
     byId("o-wide").checked = state.wide;
     byId("o-spacer").checked = state.spacer;
-    byId("bgBtn").textContent = BG_LABEL[state.bg];
-    byId("sortDir").innerHTML = state.sort2 === "asc" ? "Ascending &#8593;" : "Descending &#8595;";
+    byId("sortDir").innerHTML = state.sort2 === "asc" ? "&#8593;" : "&#8595;";
     Array.prototype.forEach.call(document.querySelectorAll(".pbtn[data-pal]"), function (b) {
       var on = b.getAttribute("data-pal") === state.palette;
       b.classList.toggle("pbtn-on", on);
