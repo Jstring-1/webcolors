@@ -42,7 +42,7 @@
         <span class="num-wrap"><input class="num-input" type="number" min="1" max="99" name="size" title="Size of each swatch in pixels (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="size:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="size:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
        <span class="cgen-num" title="Split the colors into this many hue groups (1-99)">Hue Sections
-        <span class="num-wrap"><input class="num-input" type="number" min="1" max="99" name="sections" title="Split the colors into this many hue groups (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
+        <span class="num-wrap"><input class="num-input" type="number" min="1" max="360" name="sections" title="Split the colors into this many hue groups (1-360)"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
       </div>
 

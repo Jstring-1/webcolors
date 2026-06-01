@@ -76,8 +76,10 @@ body{
 
 /* color grid */
 #color-wrappage{ margin:14px auto 0; clear:both; }
-.swatch{ float:left; margin:0 1px 1px 0; padding:0; }
-.spacer{ clear:both; }
+.swatch{ float:left; margin:0 1px 1px 0; width:var(--sz,30px); height:var(--sz,30px); border-radius:50%; cursor:pointer; }
+#color-wrappage.square .swatch{ border-radius:0; }
+.spacer{ clear:both; height:10px; }
+#color-wrappage.flat .spacer{ height:0; }
 .cursor-pointer:hover{ cursor:pointer; }
 
 /* palette modal */

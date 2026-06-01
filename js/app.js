@@ -104,28 +104,31 @@
     }
   }
 
+  var WIDE_CAP = 12000; // px; guards against runaway layer memory in Wide mode
+
   function render() {
     var colors = toColorObjs(buildHexList());
     var total = colors.length;
     colors.sort(function (a, b) { return b.h - a.h; });
     var sec = clamp(state.sections, 1, Math.max(1, total));
     var per = Math.max(1, Math.ceil(total / sec));
-    var size = state.size;
-    var radius = state.square ? "" : "border-radius:50%;";
-    var spacerH = state.spacer ? 10 : 0;
     var parts = [];
     for (var i = 0; i < total; i += per) {
       var chunk = colors.slice(i, i + per).sort(cmp(state.sort1, state.sort2));
       for (var j = 0; j < chunk.length; j++) {
-        var c = chunk[j];
-        var hue = Math.round(360 * c.h), sat = Math.min(100, Math.round(100 * c.s)), lit = Math.round(100 * c.l);
-        parts.push('<div class="swatch cursor-pointer" data-clipboard-text="#' + c.x +
-          '" title="Click for color codes — #' + c.x + ', hsl(' + hue + ', ' + sat + '%, ' + lit + '%)"' +
-          ' style="background:#' + c.x + ';width:' + size + 'px;height:' + size + 'px;' + radius + '"></div>');
+        var x = chunk[j].x;
+        parts.push('<div class="swatch" data-clipboard-text="#' + x + '" title="#' + x + '" style="background:#' + x + '"></div>');
       }
-      parts.push('<div class="spacer" style="height:' + spacerH + 'px;">&nbsp;</div>');
+      parts.push('<div class="spacer"></div>');
     }
-    wrap.style.width = state.wide ? ((state.n / sec) * (size * 1.1)) + "px" : "98%";
+    // size via a CSS var, shape/spacer via classes -> much lighter per-swatch markup
+    wrap.style.setProperty("--sz", state.size + "px");
+    wrap.className = (state.square ? "square" : "") + (state.spacer ? "" : " flat");
+    if (state.wide) {
+      wrap.style.width = Math.min(Math.round((state.n / sec) * (state.size * 1.1)), WIDE_CAP) + "px";
+    } else {
+      wrap.style.width = "98%";
+    }
     wrap.innerHTML = parts.join("");
     applyBackground(colors);
   }
@@ -223,7 +226,7 @@
   function wire() {
     cgen.querySelector('[name="n"]').addEventListener("change", function () { state.n = clamp(parseInt(this.value, 10) || 3000, 100, 9999); this.value = state.n; render(); });
     cgen.querySelector('[name="size"]').addEventListener("change", function () { state.size = clamp(parseInt(this.value, 10) || 15, 1, 99); this.value = state.size; render(); });
-    cgen.querySelector('[name="sections"]').addEventListener("change", function () { state.sections = clamp(parseInt(this.value, 10) || 20, 1, 99); this.value = state.sections; render(); });
+    cgen.querySelector('[name="sections"]').addEventListener("change", function () { state.sections = clamp(parseInt(this.value, 10) || 20, 1, 360); this.value = state.sections; render(); });
 
     Array.prototype.forEach.call(cgen.querySelectorAll('[name="sort1"]'), function (r) {
       r.addEventListener("change", function () { state.sort1 = this.value; render(); });
