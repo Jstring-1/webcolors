@@ -23,13 +23,8 @@
 ?>
       </div>
       <div class="seg">
-<?php
-       foreach (array("asc"=>"Asc","desc"=>"Desc") as $v => $lbl) {
-        $id = "s2-$v";
-        echo '<input type="radio" class="tg" id="'.$id.'" name="sort2" value="'.$v.'" onchange="this.form.submit()"'.($sort2==$v?' checked':'').'>'
-            .'<label class="tg-btn" for="'.$id.'">'.$lbl.'</label>';
-       }
-?>
+       <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
+       <button type="submit" name="sort2" value="<?php echo $sort2=="asc" ? "desc" : "asc"; ?>" class="tg-btn tg-toggle"><?php echo $sort2=="asc" ? "Ascending &#8593;" : "Descending &#8595;"; ?></button>
       </div>
      </div>
 

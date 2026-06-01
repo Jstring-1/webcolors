@@ -73,7 +73,7 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
     var ri=function(a,b){return Math.floor(Math.random()*(b-a+1))+a;};
     f.n.value=ri(100,9999);f.sections.value=ri(1,99);f.size.value=ri(8,60);
     var s1=['h','s','l','x','sl'][ri(0,4)];f.querySelector('input[name="sort1"][value="'+s1+'"]').checked=true;
-    var s2=['asc','desc'][ri(0,1)];f.querySelector('input[name="sort2"][value="'+s2+'"]').checked=true;
+    f.querySelector('input[type="hidden"][name="sort2"]').value=['asc','desc'][ri(0,1)];
     ['o-black','o-square','o-wide','o-spacer','o-disco'].forEach(function(id){var el=document.getElementById(id);if(el)el.checked=Math.random()<0.5;});
     f.querySelector('input[type="hidden"][name="palette"]').value='';
     f.submit();
