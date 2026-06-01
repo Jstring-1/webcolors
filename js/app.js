@@ -3,7 +3,7 @@
   "use strict";
 
   var state = {
-    n: 3000, size: 15, sections: 20,
+    n: 3000, size: 15, sections: 3,
     sort1: "l", sort2: "asc",
     bg: "black", // "black" | "white"
     square: false, wide: false, spacer: true,
@@ -226,7 +226,7 @@
   function wire() {
     cgen.querySelector('[name="n"]').addEventListener("change", function () { state.n = clamp(parseInt(this.value, 10) || 3000, 100, 9999); this.value = state.n; render(); });
     cgen.querySelector('[name="size"]').addEventListener("change", function () { state.size = clamp(parseInt(this.value, 10) || 15, 1, 99); this.value = state.size; render(); });
-    cgen.querySelector('[name="sections"]').addEventListener("change", function () { state.sections = clamp(parseInt(this.value, 10) || 20, 1, 360); this.value = state.sections; render(); });
+    cgen.querySelector('[name="sections"]').addEventListener("change", function () { state.sections = clamp(parseInt(this.value, 10) || 3, 1, 360); this.value = state.sections; render(); });
 
     Array.prototype.forEach.call(cgen.querySelectorAll('[name="sort1"]'), function (r) {
       r.addEventListener("change", function () { state.sort1 = this.value; render(); });

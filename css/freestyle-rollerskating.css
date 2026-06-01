@@ -11,12 +11,12 @@ img{ border:0; }
 :root{ --accent:#3b82f6; --on:#16a34a; --panel:#16181d; --panel-2:#0e0f13; --line:#353941; --muted:#9aa0ab; --txt:#e8e8ea; }
 
 body{
- margin:0; padding:20px;
+ margin:0; padding:10px 20px 20px;
  font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  font-size:14px; line-height:1.5;
  background-color:#fff; color:#222;
 }
-#wrapper{ width:99%; max-width:1280px; margin:0 auto 50px; padding:12px 10px; }
+#wrapper{ width:99%; max-width:1280px; margin:0 auto 8px; padding:6px 10px; }
 #header{ padding:2px 0 4px; }
 #page{ min-height:200px; }
 
