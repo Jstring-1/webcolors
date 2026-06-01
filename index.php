@@ -19,7 +19,7 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
   <meta name="keywords" content="random color generator, web safe colors, crayola colors, html color codes, hex color code, hsl">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="css/freestyle-rollerskating.css<?php echo "?id=".rand(1111,9999); ?>" rel="stylesheet" type="text/css" />
  </head>
  <body style="<?php echo $bgcolor; unset($bgcolor); ?>">
@@ -68,6 +68,15 @@ background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet
    function wcModal(n){var m=document.getElementById('m-'+n);if(m){m.classList.add('open');document.documentElement.style.overflow='hidden';}}
    function wcClose(){var m=document.querySelector('.wc-modal.open');if(m){m.classList.remove('open');document.documentElement.style.overflow='';}}
    document.addEventListener('keydown',function(e){if(e.key==='Escape')wcClose();});
+   function wcStep(name, delta){
+    var f=document.getElementById('cgen');if(!f)return;
+    var el=f.elements[name];if(!el)return;
+    var min=parseInt(el.min,10); var max=parseInt(el.max,10);
+    if(isNaN(min))min=0; if(isNaN(max))max=999999;
+    var v=parseInt(el.value,10); if(isNaN(v))v=min;
+    v=Math.min(max, Math.max(min, v+delta));
+    el.value=v; f.submit();
+   }
    function wcRandomize(){
     var f=document.getElementById('cgen');if(!f)return;
     var ri=function(a,b){return Math.floor(Math.random()*(b-a+1))+a;};

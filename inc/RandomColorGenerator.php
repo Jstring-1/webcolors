@@ -5,9 +5,15 @@
 
      <div class="cgen-group">
       <span class="cgen-head">Amount</span>
-      <label class="cgen-num">Dots/Boxes <input type="number" min="100" max="9999" name="n" value="<?php echo $n; ?>" onchange="this.form.submit()"></label>
-      <label class="cgen-num">Dot/Box size <input type="number" min="1" max="99" name="size" value="<?php echo $size; ?>" onchange="this.form.submit()"></label>
-      <label class="cgen-num">Hue Sections <input type="number" min="1" max="99" name="sections" value="<?php echo $sections; ?>" onchange="this.form.submit()"></label>
+      <span class="cgen-num">Dots/Boxes
+       <span class="num-wrap"><input type="number" min="100" max="9999" step="50" name="n" value="<?php echo $n; ?>" onchange="this.form.submit()"><span class="num-steps"><button type="button" class="num-up" onclick="wcStep('n',50)" aria-label="increase">&#9650;</button><button type="button" class="num-down" onclick="wcStep('n',-50)" aria-label="decrease">&#9660;</button></span></span>
+      </span>
+      <span class="cgen-num">Dot/Box size
+       <span class="num-wrap"><input type="number" min="1" max="99" name="size" value="<?php echo $size; ?>" onchange="this.form.submit()"><span class="num-steps"><button type="button" class="num-up" onclick="wcStep('size',1)" aria-label="increase">&#9650;</button><button type="button" class="num-down" onclick="wcStep('size',-1)" aria-label="decrease">&#9660;</button></span></span>
+      </span>
+      <span class="cgen-num">Hue Sections
+       <span class="num-wrap"><input type="number" min="1" max="99" name="sections" value="<?php echo $sections; ?>" onchange="this.form.submit()"><span class="num-steps"><button type="button" class="num-up" onclick="wcStep('sections',1)" aria-label="increase">&#9650;</button><button type="button" class="num-down" onclick="wcStep('sections',-1)" aria-label="decrease">&#9660;</button></span></span>
+      </span>
      </div>
 
      <div class="cgen-group">
