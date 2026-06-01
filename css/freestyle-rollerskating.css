@@ -77,6 +77,17 @@ body{
  border:none; color:#fff; background:linear-gradient(135deg,#7c3aed,#db2777); }
 .rand-btn:hover{ filter:brightness(1.08); }
 
+/* palette tray (chosen colors) */
+.palette-tray{ display:flex; flex-wrap:wrap; align-items:flex-start; gap:12px; margin:4px 0 14px; }
+.palette-tray:empty{ display:none; }
+.palette-tray::before{ content:"Palette"; align-self:center; font-size:10.5px; text-transform:uppercase; letter-spacing:.09em; font-weight:700; color:#888; }
+.pchip{ position:relative; width:120px; }
+.pchip-sw{ height:64px; border-radius:8px; cursor:pointer; border:1px solid rgba(128,128,128,.35); }
+.pchip-hex{ display:block; margin-top:4px; text-align:center; font-size:12px; font-family:Consolas,"Liberation Mono",Menlo,monospace; color:#333; }
+body.mode-dark .pchip-hex{ color:#ddd; }
+.pchip-x{ position:absolute; top:-7px; right:-7px; width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:50%; background:#e11d48; color:#fff; font-size:14px; line-height:1; cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,.45); }
+.pchip-x:hover{ background:#f43f5e; }
+
 /* color grid */
 #color-wrappage{ margin:14px auto 0; clear:both; }
 .swatch{ float:left; margin:0 1px 1px 0; width:var(--sz,30px); height:var(--sz,30px); border-radius:50%; cursor:pointer; }
@@ -106,6 +117,8 @@ body{
 .cp-val{ font-size:12.5px; font-family:Consolas,"Liberation Mono",Menlo,monospace; }
 .color-pop-x{ position:absolute; top:5px; right:7px; padding:0; border:none; background:none; color:var(--pop-muted); font-size:18px; line-height:1; cursor:pointer; }
 .color-pop-x:hover{ color:var(--pop-fg); }
+.cp-add{ display:block; width:100%; margin-top:8px; padding:6px 8px; border:1px dashed var(--pop-line); border-radius:7px; background:transparent; color:var(--pop-fg); font-size:12px; font-weight:600; cursor:pointer; }
+.cp-add:hover{ background:var(--pop-hover); border-color:var(--accent); }
 .cp-hint{ margin-top:6px; font-size:10.5px; font-style:italic; color:var(--pop-muted); text-align:center; }
 
 /* copy toast */

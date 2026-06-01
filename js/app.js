@@ -13,7 +13,8 @@
   var BG_CYCLE = ["black", "white"];
   var BG_LABEL = { black: "Black BG", white: "White BG" };
 
-  var cgen, wrap;
+  var cgen, wrap, paletteTray, popHex = "";
+  var PALETTE_CAP = 10;
 
   function ri(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
   function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
@@ -210,9 +211,24 @@
     ];
   }
 
+  function addToPalette(hex) {
+    if (!hex) return;
+    hex = hex.toLowerCase();
+    if (paletteTray.querySelector('[data-pal-hex="' + hex + '"]')) return; // dedupe
+    if (paletteTray.querySelectorAll(".pchip").length >= PALETTE_CAP) { toast("Palette is full (" + PALETTE_CAP + ")"); return; }
+    var chip = document.createElement("div");
+    chip.className = "pchip";
+    chip.setAttribute("data-pal-hex", hex);
+    chip.innerHTML = '<div class="pchip-sw" data-clipboard-text="' + hex + '" title="' + hex + '" style="background:' + hex + '"></div>' +
+      '<span class="pchip-hex">' + hex + '</span>' +
+      '<button type="button" class="pchip-x" aria-label="remove">&times;</button>';
+    paletteTray.appendChild(chip);
+  }
+
   function openColorPop(hex, x, y) {
     var pop = byId("color-pop");
     var clean = hex.replace("#", "");
+    popHex = "#" + clean.toLowerCase();
     pop.querySelector(".color-pop-sw").style.background = "#" + clean;
     pop.querySelector(".color-pop-rows").innerHTML = getCodes(hex).map(function (c) {
       return '<button type="button" class="cp-row" data-copy="' + c.value + '"><span class="cp-label">' + c.label + '</span><span class="cp-val">' + c.value + "</span></button>";
@@ -266,6 +282,8 @@
       m.addEventListener("click", function (e) { if (e.target === m) window.wcClose(); });
     });
     document.querySelector(".color-pop-x").addEventListener("click", closeColorPop);
+    byId("cpAdd").addEventListener("click", function (e) { e.stopPropagation(); addToPalette(popHex); closeColorPop(); });
+    paletteTray.addEventListener("click", function (e) { var x = e.target.closest(".pchip-x"); if (x) { e.stopPropagation(); var c = x.closest(".pchip"); if (c) c.remove(); } });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeColorPop(); window.wcClose(); } });
 
     document.addEventListener("click", function (e) {
@@ -280,6 +298,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     cgen = byId("cgen");
     wrap = byId("color-wrappage");
+    paletteTray = byId("palette-tray");
     byId("m-websafe").querySelector(".wc-grid").innerHTML = renderPaletteGrid(WEBSAFE);
     byId("m-crayola").querySelector(".wc-grid").innerHTML = renderPaletteGrid(CRAYOLA);
     syncControls();

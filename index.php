@@ -88,6 +88,8 @@
      </div>
     </div>
 
+    <div id="palette-tray" class="palette-tray"></div>
+
     <div id="color-wrappage"></div>
 
    </div>
@@ -114,6 +116,7 @@
    <button type="button" class="color-pop-x" aria-label="close">&times;</button>
    <div class="color-pop-sw"></div>
    <div class="color-pop-rows"></div>
+   <button type="button" class="cp-add" id="cpAdd">+ Add to palette</button>
    <div class="cp-hint">Click a code to copy</div>
   </div>
 
