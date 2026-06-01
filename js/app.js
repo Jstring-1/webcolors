@@ -91,6 +91,7 @@
 
   function applyBackground(colors) {
     var body = document.body;
+    body.classList.toggle("mode-dark", state.bg === "black");
     if (state.bg === "black") {
       var txt = "#dddddd";
       if (colors && colors.length) {

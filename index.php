@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="css/freestyle-rollerskating.css" rel="stylesheet" type="text/css" />
  </head>
- <body style="background:#000;color:#ddd;">
+ <body class="mode-dark" style="background:#000;color:#ddd;">
 
   <div id="wrapper">
 
