@@ -82,9 +82,6 @@
         <button type="button" class="pbtn" data-view="crayola" title="Browse all Crayola colors">View</button>
         <button type="button" class="pbtn" data-pal="crayola" title="Generate using only Crayola colors">Restrict colors</button>
        </div>
-      </div>
-
-      <div class="cgen-group cgen-meta">
        <button type="button" class="rand-btn" id="randBtn" title="Randomize every setting and colors">&#127922; Randomize</button>
       </div>
 

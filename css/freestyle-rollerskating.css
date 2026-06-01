@@ -27,7 +27,7 @@ body{
 /* form panel */
 .cgen{ position:relative; background:var(--panel); color:var(--txt); border:1px solid var(--line);
  border-radius:14px; padding:14px 16px; margin:8px 0 18px; box-shadow:0 6px 24px rgba(0,0,0,.25); }
-.cgen-row{ display:flex; flex-wrap:wrap; gap:16px 24px; align-items:flex-start; }
+.cgen-row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px 24px; align-items:flex-start; }
 .cgen-group{ display:flex; flex-direction:column; gap:8px; }
 .cgen-head{ font-size:10.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:700; }
 
@@ -68,8 +68,7 @@ body{
 .pbtn-on{ background:var(--on); border-color:var(--on); color:#fff; }
 
 /* randomize */
-.cgen-meta{ align-items:flex-start; align-self:flex-end; }
-.rand-btn{ display:inline-flex; align-items:center; height:30px; padding:0 18px; font-size:13.5px; font-weight:700; border-radius:10px; cursor:pointer;
+.rand-btn{ display:inline-flex; align-items:center; align-self:flex-start; height:30px; margin-top:6px; padding:0 18px; font-size:13.5px; font-weight:700; border-radius:10px; cursor:pointer;
  border:none; color:#fff; background:linear-gradient(135deg,#7c3aed,#db2777); }
 .rand-btn:hover{ filter:brightness(1.08); }
 
