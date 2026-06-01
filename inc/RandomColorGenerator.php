@@ -1,81 +1,98 @@
-   <h2>Unique Random Web Color Generator</h2>
-   <div id="form" style="background:#<?php echo key($bg1); ?>;">
-    <form name="colors" method="get" action="/">
-     <div id="form-section">
-      <div id="form-inner">
-       <input type="hidden" name="x" value="<?php echo htmlspecialchars($_GET['x'] ?? '', ENT_QUOTES); ?>">
-       <b>Number of Colors</b> (100 - 9,999)<br />
-       <input type="text" maxlength="4" value="<?php echo $n; ?>" name="n"><br />
-       <b>Hue Sections</b> (1 - 99)<br />
-       <input type="text" maxlength="2" value="<?php echo $sections; ?>" name="sections"><br />
-       <b>Size of Colors</b> (1px - 99px)<br />
-       <input class="putter" maxlength="2" type="text" value="<?php echo $size; ?>" name="size">
-      </div>
-      <h4>
-       Try these combos:<br />
-       <a href="?x=rcg&n=3700&sections=100&size=30&sort1=l&sort2=desc&black=yes&shape=square&sectionspacer=no">Combo 1</a> - 
-       <a href="?x=rcg&n=1824&sections=12&size=60&sort1=sl&sort2=asc&shape=square">Combo 2</a> - 
-       <a href="?x=rcg&n=4950&sections=6&size=20&sort1=s&sort2=asc">Combo 3</a>
-      </h4>
+   <form name="colors" method="post" action="/" class="cgen" id="cgen">
+    <input type="hidden" name="palette" value="<?php echo htmlspecialchars($palette, ENT_QUOTES); ?>">
+
+    <div class="cgen-row">
+
+     <div class="cgen-group">
+      <span class="cgen-head">Amount</span>
+      <label class="cgen-num">Dots/Boxes <input type="number" min="100" max="9999" name="n" value="<?php echo $n; ?>" onchange="this.form.submit()"></label>
+      <label class="cgen-num">Dot/Box size <input type="number" min="1" max="99" name="size" value="<?php echo $size; ?>" onchange="this.form.submit()"></label>
+      <label class="cgen-num">Hue Sections <input type="number" min="1" max="99" name="sections" value="<?php echo $sections; ?>" onchange="this.form.submit()"></label>
      </div>
-     <div id="form-section">
-      <div id="form-inner">
-       <b>Order Sections By</b><br />
-       <input type="radio" name="sort1" <?php echo ($sort1 == "h") ? "checked" : ""; ?> value="h" /> Hue (HSL)<br />
-       <input type="radio" name="sort1" <?php echo ($sort1 == "s") ? "checked" : ""; ?> value="s" /> Saturation (HSL)<br />
-       <input type="radio" name="sort1" <?php echo ($sort1 == "l") ? "checked" : ""; ?> value="l" /> Lightness (HSL, default)<br />
-       <input type="radio" name="sort1" <?php echo ($sort1 == "x") ? "checked" : ""; ?> value="x" /> Hex Code<br />
-       <input type="radio" name="sort1" <?php echo ($sort1 == "sl") ? "checked" : ""; ?> value="sl" /> Saturation * Lightness (HSL)<br /><br />
-       <input type="radio" name="sort2" <?php echo ($sort2 == "desc") ? "checked" : ""; ?> value="desc" /> Descending<br />
-       <input type="radio" name="sort2" <?php echo ($sort2 == "asc") ? "checked" : ""; ?> value="asc" /> Ascending (default)
+
+     <div class="cgen-group">
+      <span class="cgen-head">Order by</span>
+      <div class="seg">
+<?php
+       $sorts = array("h"=>"Hue","s"=>"Sat","l"=>"Light","x"=>"Hex","sl"=>"Sat\xC3\x97Light");
+       foreach ($sorts as $v => $lbl) {
+        $id = "s1-$v";
+        echo '<input type="radio" class="tg" id="'.$id.'" name="sort1" value="'.$v.'" onchange="this.form.submit()"'.($sort1==$v?' checked':'').'>'
+            .'<label class="tg-btn" for="'.$id.'">'.$lbl.'</label>';
+       }
+?>
       </div>
-      <h4>
-       &nbsp;<br />
-       <b style="color:#c00;"><?php echo $total; ?></b> Colors Generated
-     </div>
-     <div id="form-section">
-      <div id="form-inner">
-       <b>Other Options</b><br />
-       <input type="checkbox" name="black" <?php echo ( $_GET["black"] == "yes" ) ? "checked" : "";?> value="yes"> Black Background<br />
-       <input type="checkbox" name="shape" <?php echo ( $_GET["shape"] == "square" ) ? "checked" : "";?> value="square"> Square Colors<br />
-       <input type="checkbox" name="serious" <?php echo ( $_GET["serious"] == "totally" ) ? "checked" : "";?> value="totally"> Wide Mode<br />
-       <input type="checkbox" name="sectionspacer" <?php echo ( $_GET["sectionspacer"] == "no" ) ? "checked" : "";?> value="no"> Remove Section Spacer<br />
-       <input type="checkbox" name="discomode" <?php echo ( $_GET["discomode"] == "righton" ) ? "checked" : "";?> value="righton"> Disco Mode<br /><br />
-       <input type="submit" value="Boogie" class="button"><br /><br />
+      <div class="seg">
+<?php
+       foreach (array("asc"=>"Asc","desc"=>"Desc") as $v => $lbl) {
+        $id = "s2-$v";
+        echo '<input type="radio" class="tg" id="'.$id.'" name="sort2" value="'.$v.'" onchange="this.form.submit()"'.($sort2==$v?' checked':'').'>'
+            .'<label class="tg-btn" for="'.$id.'">'.$lbl.'</label>';
+       }
+?>
       </div>
-      <h4>
-       HOVER for color info<br />
-       CLICK to copy hex code to clipboard
-      </h4>
      </div>
-     <div id="clear-both"></div>
-    </form>
-   </div>
-   <div id="color-wrappage" style="width:<?php echo ( $serious == "totally" ) ? ($n / $sections) * ($size * 1.1) : "98%"; ?>;">
+
+     <div class="cgen-group">
+      <span class="cgen-head">Options</span>
+      <div class="seg seg-wrap">
+       <input type="hidden" name="black" value="no">
+       <input type="checkbox" class="tg" id="o-black" name="black" value="yes" onchange="this.form.submit()"<?php echo $black=="yes"?" checked":""; ?>>
+       <label class="tg-btn" for="o-black">Black BG</label>
+       <input type="checkbox" class="tg" id="o-square" name="shape" value="square" onchange="this.form.submit()"<?php echo $shape=="square"?" checked":""; ?>>
+       <label class="tg-btn" for="o-square">Square</label>
+       <input type="checkbox" class="tg" id="o-wide" name="serious" value="totally" onchange="this.form.submit()"<?php echo $serious=="totally"?" checked":""; ?>>
+       <label class="tg-btn" for="o-wide">Wide</label>
+       <input type="checkbox" class="tg" id="o-spacer" name="sectionspacer" value="no" onchange="this.form.submit()"<?php echo $sectionspacer=="no"?" checked":""; ?>>
+       <label class="tg-btn" for="o-spacer">No Spacer</label>
+       <input type="checkbox" class="tg" id="o-disco" name="discomode" value="righton" onchange="this.form.submit()"<?php echo $discomode=="righton"?" checked":""; ?>>
+       <label class="tg-btn" for="o-disco">Disco</label>
+      </div>
+     </div>
+
+     <div class="cgen-group">
+      <span class="cgen-head">Palettes</span>
+      <div class="pal-row">
+       <span class="pal-name">Web Safe Colors</span>
+       <button type="button" class="pbtn" onclick="wcModal('websafe')">View</button>
+       <button type="submit" name="palette" value="<?php echo $palette=="websafe"?"":"websafe"; ?>" class="pbtn<?php echo $palette=="websafe"?" pbtn-on":""; ?>"><?php echo $palette=="websafe"?"Using \xE2\x9C\x93":"Restrict colors"; ?></button>
+      </div>
+      <div class="pal-row">
+       <span class="pal-name">Crayola Colors</span>
+       <button type="button" class="pbtn" onclick="wcModal('crayola')">View</button>
+       <button type="submit" name="palette" value="<?php echo $palette=="crayola"?"":"crayola"; ?>" class="pbtn<?php echo $palette=="crayola"?" pbtn-on":""; ?>"><?php echo $palette=="crayola"?"Using \xE2\x9C\x93":"Restrict colors"; ?></button>
+      </div>
+     </div>
+
+     <div class="cgen-group cgen-meta">
+      <button type="button" class="rand-btn" onclick="wcRandomize()">&#127922; Randomize</button>
+      <span class="cgen-count"><b><?php echo $total; ?></b> colors<?php echo $palette ? " &middot; ".$palette : ""; ?></span>
+     </div>
+
+    </div>
+   </form>
+
+   <div id="color-wrappage" style="width:<?php echo ( $serious == "totally" ) ? ($n / max(1,$sections)) * ($size * 1.1) . "px" : "98%"; ?>;">
 <?php
 // Sort the array by hue initially, calculate the section size, and chunk into sections
-$colors = sortmulti( $colors,'h','desc' );
-$num = ceil( count( $colors ) / $sections );
+$colors = sortmulti( $colors, 'h', 'desc' );
+$num = max( 1, ceil( count( $colors ) / $sections ) );
 $colors = array_chunk( $colors, $num, true );
+$shown = count( $colors );
 
-// DISPLAY CODE & HSL Calculations from decimals, sort by given data, cycle through the new array and display the colors
-for ( $i = 0; $i < $sections; $i++ ) {
+for ( $i = 0; $i < $shown; $i++ ) {
  $arr = sortmulti( $colors[$i], $sort1, $sort2 );
  foreach ( $arr as $key => $val ) {
   $hue = round( 360 * $colors[$i][$key]['h'] ) . "&deg;";
-  $saturation = round( 100 * $colors[$i][$key]['s'] ) . "%";
-  if ( $saturation > 100 ) { $saturation = "100%"; }  //  This fixed an error where this value got fucked up like this: 1.0E+21%  <-- what the fuck is that anyways?
+  $saturation = round( 100 * $colors[$i][$key]['s'] ); if ( $saturation > 100 ) { $saturation = 100; } $saturation .= "%";
   $lightness = round( 100 * $colors[$i][$key]['l'] ) . "%";
-
-  // Display divs and put color values in the title attribute, and display that shit so people can read/copy it for fuck's sake
-  echo "
-    <div class=\"copy-target cursor-pointer\" data-clipboard-text=\"#" . $colors[$i][$key]['x'] . "\" id=\"color\" title=\"HEX: #" . $colors[$i][$key]['x'] . ", HSL: ($hue, $saturation, $lightness)\" style=\"background:#" . $colors[$i][$key]['x'] . ";width:" . $size . ";height:" . $size . "px;";if( $shape != "square" ){ echo "border-radius:50%;"; } echo "\"></div>";
+  $radius = ( $shape != "square" ) ? "border-radius:50%;" : "";
+  echo '<div class="swatch copy-target cursor-pointer" data-clipboard-text="#' . $colors[$i][$key]['x']
+     . '" title="HEX: #' . $colors[$i][$key]['x'] . ', HSL: (' . $hue . ', ' . $saturation . ', ' . $lightness . ')"'
+     . ' style="background:#' . $colors[$i][$key]['x'] . ';width:' . $size . 'px;height:' . $size . 'px;' . $radius . '"></div>';
  }
- echo "
-
-    <div id=\"spacer\" style=\"height:"; if( $sectionspacer != "no" ){ echo "10px;"; } else { echo "0;"; } echo ";\">&nbsp;</div>
-";
+ echo '<div class="spacer" style="height:' . ( $sectionspacer != "no" ? "10px" : "0" ) . ';">&nbsp;</div>';
 }
-unset( $digits,$n, $hue, $saturation, $lightness, $total );  //  \m/
-?>    
+unset( $hue, $saturation, $lightness );
+?>
    </div>
