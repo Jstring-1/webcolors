@@ -99,7 +99,19 @@
   <div class="wc-modal" id="m-websafe">
    <div class="wc-modal-box">
     <div class="wc-modal-bar"><h3 class="wc-modal-title">Web Safe Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
-    <p class="wc-modal-note">Click any color to copy its hex code.</p>
+    <div class="wc-sort">
+     <span class="wc-sort-lbl">Sort</span>
+     <select class="wc-sort-sel" data-pal="websafe" aria-label="Sort by">
+      <option value="name">Name</option>
+      <option value="hue">Hue</option>
+      <option value="sat">Saturation</option>
+      <option value="lit">Lightness</option>
+      <option value="hex">Hex</option>
+      <option value="sl">Sat&#215;Light</option>
+     </select>
+     <button type="button" class="wc-sort-dir" data-pal="websafe" title="Ascending / descending">&#8593;</button>
+     <span class="wc-sort-note">click a color for its codes</span>
+    </div>
     <div class="wc-grid"></div>
    </div>
   </div>
@@ -107,7 +119,19 @@
   <div class="wc-modal" id="m-crayola">
    <div class="wc-modal-box">
     <div class="wc-modal-bar"><h3 class="wc-modal-title">Crayola Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
-    <p class="wc-modal-note">Click any color to copy its hex code.</p>
+    <div class="wc-sort">
+     <span class="wc-sort-lbl">Sort</span>
+     <select class="wc-sort-sel" data-pal="crayola" aria-label="Sort by">
+      <option value="name">Name</option>
+      <option value="hue">Hue</option>
+      <option value="sat">Saturation</option>
+      <option value="lit">Lightness</option>
+      <option value="hex">Hex</option>
+      <option value="sl">Sat&#215;Light</option>
+     </select>
+     <button type="button" class="wc-sort-dir" data-pal="crayola" title="Ascending / descending">&#8593;</button>
+     <span class="wc-sort-note">click a color for its codes</span>
+    </div>
     <div class="wc-grid"></div>
    </div>
   </div>

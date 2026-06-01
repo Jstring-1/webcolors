@@ -14,6 +14,8 @@
 
   var cgen, wrap, paletteTray, popHex = "";
   var PALETTE_CAP = 10;
+  var PALETTE_ROWS = {};
+  var modalSort = { websafe: { key: "name", dir: "asc" }, crayola: { key: "name", dir: "asc" } };
 
   function ri(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
   function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
@@ -134,19 +136,32 @@
     applyBackground(colors);
   }
 
-  function renderPaletteGrid(src) {
-    var rows = Object.keys(src).map(function (name) {
+  function paletteRows(src) {
+    return Object.keys(src).map(function (name) {
       var hex = String(src[name]).toLowerCase();
       var r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);
       var hsl = rgbToHsl(r, g, b);
-      return { name: name, hex: hex, hue: Math.round(360 * hsl.h), sat: Math.min(100, Math.round(100 * hsl.s)), lit: Math.round(100 * hsl.l) };
-    }).sort(function (a, b) { return a.name < b.name ? -1 : a.name > b.name ? 1 : 0; });
-    return rows.map(function (c) {
+      var sat = Math.min(100, Math.round(100 * hsl.s)), lit = Math.round(100 * hsl.l);
+      return { name: name, hex: hex, hue: Math.round(360 * hsl.h), sat: sat, lit: lit, sl: sat * lit };
+    });
+  }
+
+  function paletteHTML(rows, key, dir) {
+    var sign = dir === "asc" ? 1 : -1;
+    var sorted = rows.slice().sort(function (a, b) {
+      if (key === "name" || key === "hex") { return a[key] < b[key] ? -sign : a[key] > b[key] ? sign : 0; }
+      return (a[key] - b[key]) * sign;
+    });
+    return sorted.map(function (c) {
       var txt = c.lit < 50 ? "#fff" : "#000";
-      var info = c.name + " — click for color codes";
       return '<div class="wsc-color cursor-pointer" data-clipboard-text="#' + c.hex +
-        '" title="' + info + '" style="background:#' + c.hex + ";color:" + txt + '"><b>' + c.name + "</b>: #" + c.hex + "</div>";
+        '" title="' + c.name + ' — click for color codes" style="background:#' + c.hex + ";color:" + txt + '"><b>' + c.name + "</b>: #" + c.hex + "</div>";
     }).join("");
+  }
+
+  function renderModalGrid(name) {
+    var s = modalSort[name];
+    byId("m-" + name).querySelector(".wc-grid").innerHTML = paletteHTML(PALETTE_ROWS[name], s.key, s.dir);
   }
 
   function syncControls() {
@@ -276,6 +291,13 @@
 
     byId("randBtn").addEventListener("click", randomize);
 
+    Array.prototype.forEach.call(document.querySelectorAll(".wc-sort-sel"), function (sel) {
+      sel.addEventListener("change", function () { var p = sel.getAttribute("data-pal"); modalSort[p].key = sel.value; renderModalGrid(p); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".wc-sort-dir"), function (btn) {
+      btn.addEventListener("click", function () { var p = btn.getAttribute("data-pal"); var s = modalSort[p]; s.dir = s.dir === "asc" ? "desc" : "asc"; btn.innerHTML = s.dir === "asc" ? "&#8593;" : "&#8595;"; renderModalGrid(p); });
+    });
+
     Array.prototype.forEach.call(document.querySelectorAll(".wc-modal"), function (m) {
       m.addEventListener("click", function (e) { if (e.target === m) window.wcClose(); });
     });
@@ -297,8 +319,10 @@
     cgen = byId("cgen");
     wrap = byId("color-wrappage");
     paletteTray = byId("palette-tray");
-    byId("m-websafe").querySelector(".wc-grid").innerHTML = renderPaletteGrid(WEBSAFE);
-    byId("m-crayola").querySelector(".wc-grid").innerHTML = renderPaletteGrid(CRAYOLA);
+    PALETTE_ROWS.websafe = paletteRows(WEBSAFE);
+    PALETTE_ROWS.crayola = paletteRows(CRAYOLA);
+    renderModalGrid("websafe");
+    renderModalGrid("crayola");
     syncControls();
     wire();
     render();
