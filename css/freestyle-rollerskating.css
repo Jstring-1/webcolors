@@ -110,16 +110,15 @@ body.mode-dark .pchip-hex{ color:#ddd; }
 
 /* color codes popup */
 .color-pop{ display:none; position:fixed; z-index:1100; min-width:208px; padding:10px; background:var(--pop-bg); color:var(--pop-fg); border:1px solid var(--pop-line); border-radius:12px; box-shadow:0 14px 44px rgba(0,0,0,.55); }
-.color-pop-sw{ height:34px; border-radius:8px; margin:2px 0 8px; border:1px solid rgba(128,128,128,.4); }
+.color-pop-sw{ position:relative; height:38px; border-radius:8px; margin:2px 0 8px; border:1px solid rgba(128,128,128,.4); }
 .cp-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; padding:6px 8px; border:none; border-radius:7px; background:transparent; color:var(--pop-fg); cursor:pointer; text-align:left; }
 .cp-row:hover{ background:var(--pop-hover); }
 .cp-label{ font-size:10.5px; font-weight:700; letter-spacing:.05em; color:var(--pop-muted); }
 .cp-val{ font-size:12.5px; font-family:Consolas,"Liberation Mono",Menlo,monospace; }
 .color-pop-x{ position:absolute; top:5px; right:7px; padding:0; border:none; background:none; color:var(--pop-muted); font-size:18px; line-height:1; cursor:pointer; }
 .color-pop-x:hover{ color:var(--pop-fg); }
-.cp-add{ display:block; width:100%; margin-top:8px; padding:6px 8px; border:1px dashed var(--pop-line); border-radius:7px; background:transparent; color:var(--pop-fg); font-size:12px; font-weight:600; cursor:pointer; }
-.cp-add:hover{ background:var(--pop-hover); border-color:var(--accent); }
-.cp-hint{ margin-top:6px; font-size:10.5px; font-style:italic; color:var(--pop-muted); text-align:center; }
+.cp-add{ position:absolute; top:5px; right:5px; width:20px; height:20px; display:flex; align-items:center; justify-content:center; padding:0; border:none; border-radius:6px; background:rgba(255,255,255,.72); color:#111; font-size:16px; font-weight:700; line-height:1; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,.3); }
+.cp-add:hover{ background:#fff; }
 
 /* copy toast */
 .wc-toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(10px); background:rgba(20,20,22,.95); color:#fff; padding:8px 16px; border-radius:10px; font-size:13px; font-weight:600; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; z-index:2000; box-shadow:0 6px 20px rgba(0,0,0,.4); }

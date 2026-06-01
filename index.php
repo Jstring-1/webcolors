@@ -114,10 +114,8 @@
 
   <div id="color-pop" class="color-pop">
    <button type="button" class="color-pop-x" aria-label="close">&times;</button>
-   <div class="color-pop-sw"></div>
+   <div class="color-pop-sw"><button type="button" class="cp-add" id="cpAdd" title="Add to palette" aria-label="Add to palette">+</button></div>
    <div class="color-pop-rows"></div>
-   <button type="button" class="cp-add" id="cpAdd">+ Add to palette</button>
-   <div class="cp-hint">Click a code to copy</div>
   </div>
 
   <script src="js/palettes.js"></script>
