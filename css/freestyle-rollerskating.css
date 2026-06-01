@@ -2,7 +2,7 @@
 
 /* minimal reset (replaces the old normalize/primer dump) */
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; }
+html{ -webkit-text-size-adjust:100%; overflow-y:scroll; scrollbar-gutter:stable; }
 button,input,select,textarea{ font:inherit; }
 button{ cursor:pointer; }
 a{ color:inherit; text-decoration:none; }
@@ -58,6 +58,8 @@ body{
 .tg:focus-visible + .tg-btn{ outline:2px solid var(--accent); outline-offset:2px; }
 .tg-toggle{ background:var(--accent); border-color:var(--accent); color:#fff; }
 .tg-toggle:hover{ filter:brightness(1.08); border-color:var(--accent); color:#fff; }
+#sortDir{ min-width:116px; justify-content:center; }
+#bgBtn{ min-width:84px; justify-content:center; }
 
 /* palette controls */
 .pal-row{ display:flex; align-items:center; gap:8px; }
