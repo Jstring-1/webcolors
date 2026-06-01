@@ -63,7 +63,7 @@
       <div class="cgen-group">
        <span class="cgen-head">Options</span>
        <div class="seg seg-wrap">
-        <button type="button" class="tg-btn tg-toggle" id="bgBtn" title="Cycle the page background: Black -> White -> Disco">Black BG</button>
+        <button type="button" class="tg-btn tg-toggle" id="bgBtn" title="Toggle the page background between black and white">Black BG</button>
         <input type="checkbox" class="tg" id="o-square"><label class="tg-btn" for="o-square" title="Use square swatches instead of circles">Square</label>
         <input type="checkbox" class="tg" id="o-wide"><label class="tg-btn" for="o-wide" title="Stretch the grid so each hue section is its own column">Wide</label>
         <input type="checkbox" class="tg" id="o-spacer"><label class="tg-btn" for="o-spacer" title="Show gaps between hue sections">Spacer</label>

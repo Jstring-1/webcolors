@@ -5,13 +5,13 @@
   var state = {
     n: 3000, size: 15, sections: 20,
     sort1: "l", sort2: "asc",
-    bg: "black", // "black" | "white" | "disco"
+    bg: "black", // "black" | "white"
     square: false, wide: false, spacer: true,
     palette: "" // "", "websafe", "crayola"
   };
 
-  var BG_CYCLE = ["black", "white", "disco"];
-  var BG_LABEL = { black: "Black BG", white: "White BG", disco: "Disco" };
+  var BG_CYCLE = ["black", "white"];
+  var BG_LABEL = { black: "Black BG", white: "White BG" };
 
   var cgen, wrap;
 
@@ -91,10 +91,6 @@
 
   function applyBackground(colors) {
     var body = document.body;
-    if (state.bg === "disco") {
-      body.style.cssText = "background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);";
-      return;
-    }
     if (state.bg === "black") {
       var txt = "#dddddd";
       if (colors && colors.length) {
@@ -178,7 +174,6 @@
     state.n = ri(100, 9999); state.size = ri(8, 60); state.sections = ri(1, 99);
     state.sort1 = ["h", "s", "l", "x", "sl"][ri(0, 4)];
     state.sort2 = ["asc", "desc"][ri(0, 1)];
-    state.bg = BG_CYCLE[ri(0, 2)];
     state.square = Math.random() < 0.5; state.wide = Math.random() < 0.5; state.spacer = Math.random() < 0.5;
     state.palette = "";
     syncControls(); render();
