@@ -25,7 +25,7 @@
   <div id="wrapper">
 
    <div id="header">
-    <h1><a href="/"><img align="bottom" src="img/wheel-40.png" /> WebColors</a></h1>
+    <h1 class="logo"><a class="logo-link" href="/"><img class="logo-img" src="img/wheel-40.png" alt="" /> WebColors</a></h1>
    </div>
 
    <div id="page">
@@ -36,13 +36,13 @@
       <div class="cgen-group">
        <span class="cgen-head">Amount</span>
        <span class="cgen-num" title="How many colors to generate (100-9999)">Dots/Boxes
-        <span class="num-wrap"><input type="number" min="100" max="9999" step="50" name="n" title="How many colors to generate (100-9999)"><span class="num-steps"><button type="button" class="num-up" data-step="n:50" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="n:-50" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
+        <span class="num-wrap"><input class="num-input" type="number" min="100" max="9999" step="50" name="n" title="How many colors to generate (100-9999)"><span class="num-steps"><button type="button" class="num-up" data-step="n:50" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="n:-50" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
        <span class="cgen-num" title="Size of each swatch in pixels (1-99)">Dot/Box size
-        <span class="num-wrap"><input type="number" min="1" max="99" name="size" title="Size of each swatch in pixels (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="size:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="size:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
+        <span class="num-wrap"><input class="num-input" type="number" min="1" max="99" name="size" title="Size of each swatch in pixels (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="size:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="size:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
        <span class="cgen-num" title="Split the colors into this many hue groups (1-99)">Hue Sections
-        <span class="num-wrap"><input type="number" min="1" max="99" name="sections" title="Split the colors into this many hue groups (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
+        <span class="num-wrap"><input class="num-input" type="number" min="1" max="99" name="sections" title="Split the colors into this many hue groups (1-99)"><span class="num-steps"><button type="button" class="num-up" data-step="sections:1" title="Increase" aria-label="increase">&#9650;</button><button type="button" class="num-down" data-step="sections:-1" title="Decrease" aria-label="decrease">&#9660;</button></span></span>
        </span>
       </div>
 
@@ -107,7 +107,7 @@
 
   <div class="wc-modal" id="m-websafe">
    <div class="wc-modal-box">
-    <div class="wc-modal-bar"><h3>Web Safe Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
+    <div class="wc-modal-bar"><h3 class="wc-modal-title">Web Safe Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
     <p class="wc-modal-note">Click any color to copy its hex code.</p>
     <div class="wc-grid"></div>
    </div>
@@ -115,7 +115,7 @@
 
   <div class="wc-modal" id="m-crayola">
    <div class="wc-modal-box">
-    <div class="wc-modal-bar"><h3>Crayola Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
+    <div class="wc-modal-bar"><h3 class="wc-modal-title">Crayola Colors</h3><button type="button" class="wc-x" onclick="wcClose()">&times;</button></div>
     <p class="wc-modal-note">Click any color to copy its hex code.</p>
     <div class="wc-grid"></div>
    </div>
