@@ -3,7 +3,10 @@
  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>WebColors</title>
+  <title>WebColors — Random Color Generator with HSL, Web-Safe &amp; Crayola Palettes</title>
+  <link rel="canonical" href="https://webcolors.online/">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="WebColors">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KDCHCXLSS8"></script>
   <script>
@@ -16,6 +19,38 @@
   <meta name="description" content="Random web color generator with HSL info, web-safe and Crayola palettes, and one-click hex copy.">
   <meta name="keywords" content="random color generator, web safe colors, crayola colors, html color codes, hex color code, hsl">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WebColors">
+  <meta property="og:url" content="https://webcolors.online/">
+  <meta property="og:title" content="WebColors — Random Color Generator with HSL, Web-Safe &amp; Crayola Palettes">
+  <meta property="og:description" content="Generate random web colors with HSL info, browse web-safe and Crayola palettes, and copy hex codes in one click.">
+  <meta property="og:image" content="https://webcolors.online/img/wheel-400.png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="WebColors — Random Color Generator">
+  <meta name="twitter:description" content="Generate random web colors with HSL info, browse web-safe and Crayola palettes, and copy hex codes in one click.">
+  <meta name="twitter:image" content="https://webcolors.online/img/wheel-400.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+   "@context": "https://schema.org",
+   "@type": "WebApplication",
+   "name": "WebColors",
+   "url": "https://webcolors.online/",
+   "description": "Random web color generator with HSL info, web-safe and Crayola palettes, and one-click hex copy.",
+   "applicationCategory": "DesignApplication",
+   "operatingSystem": "Any",
+   "browserRequirements": "Requires JavaScript",
+   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="css/freestyle-rollerskating.css" rel="stylesheet" type="text/css" />
