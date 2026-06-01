@@ -61,7 +61,6 @@
 
      <div class="cgen-group cgen-meta">
       <button type="button" class="rand-btn" onclick="wcRandomize()">&#127922; Randomize</button>
-      <span class="cgen-count"><b><?php echo $total; ?></b> colors<?php echo $palette ? " &middot; ".$palette : ""; ?></span>
      </div>
 
     </div>
